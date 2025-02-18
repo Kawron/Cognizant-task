@@ -42,7 +42,7 @@ def update_task(task_id):
         if task['id'] == task_id:
             task.update(data)  # Update task attributes
             # create a thread that will send a notification async
-            threading.Thread(target=send_notification, args=(app, '1')).start()
+            threading.Thread(target=send_notification, args=(app, task_id)).start()
             return jsonify(task), 200
     return jsonify({'error': 'Task not found'}), 404
 
